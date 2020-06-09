@@ -15,4 +15,6 @@ class Lyric71Item(scrapy.Item):
     #lyric = scrapy.Field()
     title = scrapy.Field()
     artist = scrapy.Field()
-    pass
+    album = scrapy.Field()
+    info = scrapy.Field()
+    
