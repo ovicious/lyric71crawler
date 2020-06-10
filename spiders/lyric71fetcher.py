@@ -16,11 +16,12 @@ class Lyric71fetcherSpider(scrapy.Spider):
         
 
     def parse_infos(self,response):
-        print('')
+        
         #request = scrapy.Request(Lyric71fetcherSpider.parse.link,callback=parse_lyrics)
-        #title = scrapy.response.css('.col-xs-6 a::text').extract()
+        #title = response.css('.col-xs-6 a::text').extract()
         #artist = response.css('.col-xs-3+ .col-xs-3 a::text').extract()
         #album = response.css('.col-xs-6+ .col-xs-3 a::text').extract()
+        #print(title,artist,album)
         #yield {
         #    'title': title,
         #    'artist' : artist,
@@ -34,33 +35,16 @@ class Lyric71fetcherSpider(scrapy.Spider):
     def parse_lyrics(self,response):
         items = Lyric71Item()
         lyric = response.css('p+ p::text').extract()
-        info = response.css('a+ p::text').extract()
-        print(lyric)
-        print(info)
-        yield items
-
-'''
-    def start_requests(self):
-        title = response.css('.col-xs-6 a::text').extract()
-        artist = response.css('.col-xs-3+ .col-xs-3 a::text').extract()
-        album = response.css('.col-xs-6+ .col-xs-3 a::text').extract()
+        info = response.css('strong::text').extract()
+        #artist = Lyric71fetcherSpider.parse_infos(artist)
+        #album = parse_infos(album)
+        #title = parse_infos(title)
+        #print(lyric)
+        #print(info)
         yield {
-            'title': title,
-            'artist' : artist,
-            'album' : album }
-        yield scrapy.Request("",callback=parse_page1)
-        item = MyItem()
-    def parse_infos(self, response):
-        item['main_url'] = response.url ##extracts http://www.example.com/main_page.html
-        request = scrapy.Request("http://www.example.com/some_page.html",callback=self.parse_page2)
-        request.meta['my_meta_item'] = item ## passing item in the meta dictionary
-        ##alternatively you can follow as below
-        ##request = scrapy.Request("http://www.example.com/some_page.html",meta={'my_meta_item':item},callback=self.parse_page2)
-        return request
-
-    def parse_lyrics(self, response):
-        item = response.meta['my_meta_item']
-        item['other_url'] = response.url ##extracts http://www.example.com/some_page.html
-        return item
-
-        '''
+           'info':info,
+            #'artist' : artist,
+            #'album'  : album,
+            #'track'  : title,
+            'lyric'  : lyric
+        }
