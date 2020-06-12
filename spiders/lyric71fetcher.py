@@ -11,7 +11,6 @@ class Lyric71fetcherSpider(scrapy.Spider):
 
     def parse(self,response):
         links = response.xpath('//*[@id="wrapper"]/div[2]/div/div[1]/div/div/div[3]/ul/li[*]/a[2]/@href').extract()
-        print(links)
         for link in links:
             yield scrapy.Request(link,callback=self.parse_lyrics)
         
@@ -25,9 +24,9 @@ class Lyric71fetcherSpider(scrapy.Spider):
         print (info)
         yield {
            'info':info,
-        #    #'artist' : artist,
-        #    #'album'  : album,
-        #    #'track'  : title,
+        #    'artist' : artist,
+        #    'album'  : album,
+        #    'track'  : title,
             'lyric':lyric
         }
 
