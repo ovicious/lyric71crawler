@@ -11,10 +11,10 @@ import scrapy
 class Lyric71Item(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    #info = scrapy.Field()
-    #lyric = scrapy.Field()
+    lyric = scrapy.Field()
     title = scrapy.Field()
     artist = scrapy.Field()
     album = scrapy.Field()
     info = scrapy.Field()
+    all_info = scrapy.Field()
     
