@@ -17,4 +17,8 @@ class Lyric71Item(scrapy.Item):
     album = scrapy.Field()
     info = scrapy.Field()
     all_info = scrapy.Field()
-    
+    composer = scrapy.Field()
+    writer = scrapy.Field()
+    band = scrapy.Field()
+    movie = scrapy.Field()
+    drama = scrapy.Field()    
