@@ -5,8 +5,8 @@ from ..items import Lyric71Item
 
 class Lyric71fetcherSpider(scrapy.Spider):
     name = 'lyric71fetcher'
-    #allowed_domains = ['lyric71.net']
-    start_urls = ['http://lyrics71.net/']
+    #allowed_domains = ['<url>']
+    start_urls = ['<url>']
 
     def parse(self,response):
         links = response.xpath('//*[@id="artists-collapse"]/div/div/ul/li[*]/a/@href').extract()
